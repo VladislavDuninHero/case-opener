@@ -1,4 +1,4 @@
-package com.case_opener_game.case_opener.dto;
+package com.case_opener_game.case_opener.dto.bootstrap;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -4,6 +4,7 @@ import com.case_opener_game.case_opener.dto.error.ErrorDTO;
 import com.case_opener_game.case_opener.dto.error.ValidationErrorDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

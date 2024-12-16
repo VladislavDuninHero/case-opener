@@ -15,17 +15,17 @@ public class BootstrapFactoryBean {
         return Map.ofEntries(
                 Map.entry(
                         GameDifficulty.EASY, List.of(
-                                0, 1, 5, 10, 20, 40, 60
+                                0, 1, 2, 5, 10, 20, 40, 60
                         )
                 ),
                 Map.entry(
                         GameDifficulty.MEDIUM, List.of(
-                            0, 0, 1, 5, 10, 20, 40, 60, 120
+                            0, 0, 1, 2, 5, 10, 20, 40, 60, 80
                         )
                 ),
                 Map.entry(
                         GameDifficulty.HARD, List.of(
-                                0, 0, 0, 1, 5, 10, 20, 40, 60, 120, 240
+                                0, 0, 0, 1, 2, 5, 10, 20, 40, 60, 80, 120
                         )
                 )
         );

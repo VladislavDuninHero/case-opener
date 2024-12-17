@@ -33,15 +33,17 @@ public class BetManagerImpl implements BetManager {
                         )
                 );
 
-        return compileCalculatedRound(calculatedResult);
+        return compileCalculatedRound(calculatedResult, betDTO);
     }
 
-    private CalculatedRoundDTO compileCalculatedRound(Map<String, BigDecimal> calculatedResult) {
+    private CalculatedRoundDTO compileCalculatedRound(Map<String, BigDecimal> calculatedResult, BetDTO betDTO) {
         BigDecimal multiplier = calculatedResult.get(CalculatorType.MULTIPLIER_CALCULATOR.name());
+        BigDecimal payout = betDTO.getBetInfo().getAmount().multiply(multiplier);
 
         return new CalculatedRoundDTO(
-                null,
-                multiplier
+                betDTO.getBetInfo().getAmount(),
+                multiplier,
+                payout
         );
     }
 }

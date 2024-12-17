@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 public class CalculatedRoundDTO {
-    private BigDecimal payout;
+    private BigDecimal amount;
     private BigDecimal multiplier;
+    private BigDecimal payout;
 }

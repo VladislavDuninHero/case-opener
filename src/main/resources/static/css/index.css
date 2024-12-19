@@ -1,0 +1,56 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    padding: 5px;
+    height: 100vh;
+}
+
+.home-page {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+.game-difficulty-form__button {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+.game-difficulty-form__button:active {
+    transform: scale(0.9);
+}
+
+.game-difficulty-form__select {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.game-difficulty-form {
+    display: flex;
+    justify-content: center;
+}

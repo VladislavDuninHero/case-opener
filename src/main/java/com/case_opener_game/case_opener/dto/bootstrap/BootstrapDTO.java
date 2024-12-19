@@ -13,7 +13,7 @@ public class BootstrapDTO {
 
     private String game;
 
-    private List<Integer> multipliers;
+    private List<Double> multipliers;
 
     private String difficulty;
 }

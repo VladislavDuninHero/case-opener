@@ -5,7 +5,6 @@ import com.case_opener_game.case_opener.dto.bet.BetRequestDTO;
 import com.case_opener_game.case_opener.dto.bet.BetResponseDTO;
 import com.case_opener_game.case_opener.dto.bootstrap.BootstrapDTO;
 import com.case_opener_game.case_opener.dto.GameDTO;
-import com.case_opener_game.case_opener.enums.GameDifficulty;
 import com.case_opener_game.case_opener.service.bet.BetService;
 import com.case_opener_game.case_opener.service.bootstrap.BootstrapService;
 import jakarta.servlet.http.HttpSession;
@@ -14,7 +13,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/v1")
 public class GameController {
 
     private final BootstrapService bootstrapService;
@@ -28,8 +26,11 @@ public class GameController {
         this.betService = betService;
     }
 
-    @PostMapping("/bootstrap")
-    public ResponseEntity<BootstrapDTO> bootstrap(@Validated @RequestBody GameDTO gameDTO, HttpSession session) {
+    @PostMapping("api/v1/bootstrap")
+    public ResponseEntity<BootstrapDTO> bootstrap(
+            @Validated @RequestBody GameDTO gameDTO,
+            HttpSession session
+    ) {
         BootstrapDTO bootstrapDTO = bootstrapService.bootstrap(gameDTO);
 
         session.setAttribute("difficulty", gameDTO.getDifficulty());
@@ -38,8 +39,11 @@ public class GameController {
         return ResponseEntity.ok().body(bootstrapDTO);
     }
 
-    @PostMapping("/bet")
-    public ResponseEntity<BetResponseDTO> bet(@RequestBody BetRequestDTO betRequestDTO, HttpSession session) {
+    @PostMapping("/game/api/v1/bet")
+    public ResponseEntity<BetResponseDTO> bet(
+            @Validated @RequestBody BetRequestDTO betRequestDTO,
+            HttpSession session
+    ) {
         String difficulty = session.getAttribute("difficulty").toString();
         String gameName = session.getAttribute("gameName").toString();
 

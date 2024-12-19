@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/carousel.css}">
+    <title>Title</title>
+</head>
+<body>
+    <div class="main-container">
+        <header class="header">header</header>
+        <main class="main">
+            <section class="carousel">
+                <div class="carousel__images-container" th:each="image : ${images}">
+                    <img th:src="${image.getSrc()}" alt="" class="carousel__img active"/>
+                </div>
+            </section>
+            <article>
+                <button class="main__bet-button">Bet</button>
+            </article>
+        </main>
+        <footer class="footer">footer</footer>
+    </div>
+
+    <script
+            type="module"
+            th:src="@{/js/Carousel.js}"
+    ></script>
+    <script
+            type="module"
+            th:src="@{/js/Bet.js}"
+    ></script>
+</body>
+</html>

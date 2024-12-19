@@ -7,7 +7,6 @@ import com.case_opener_game.case_opener.dto.bet.BetDTO;
 import com.case_opener_game.case_opener.dto.bet.BetRequestDTO;
 import com.case_opener_game.case_opener.enums.GameDifficulty;
 import com.case_opener_game.case_opener.service.bet.calculator.impl.MultiplierCalculator;
-import com.case_opener_game.case_opener.service.bet.factory.MultiplierPercentageFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,9 +28,6 @@ public class PercentCalculatorTest {
     private MultiplierCalculator multiplierCalculator;
 
     @Mock
-    private MultiplierPercentageFactory multiplierPercentageFactory;
-
-    @Mock
     private BootstrapFactoryBean bootstrapFactoryBean;
 
     @Test
@@ -43,11 +39,7 @@ public class PercentCalculatorTest {
 
         BetDTO betDTO = new BetDTO(new BetRequestDTO(BigDecimal.ONE), new GameDTO("caseOpener", "EASY"));
         //When
-        Mockito.when(bootstrapFactoryBean.multipliers()).thenReturn(
-                Map.ofEntries(
-                        Map.entry(GameDifficulty.EASY, multipliers)
-                )
-        );
+
 
         //Then
         for (int i = 0; i < 100; i++) {

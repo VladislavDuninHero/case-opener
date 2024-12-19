@@ -1,5 +1,6 @@
 package com.case_opener_game.case_opener.controller.game;
 
+import com.case_opener_game.case_opener.constants.Routes;
 import com.case_opener_game.case_opener.dto.bet.BetDTO;
 import com.case_opener_game.case_opener.dto.bet.BetRequestDTO;
 import com.case_opener_game.case_opener.dto.bet.BetResponseDTO;
@@ -26,7 +27,7 @@ public class GameController {
         this.betService = betService;
     }
 
-    @PostMapping("api/v1/bootstrap")
+    @PostMapping(Routes.API_BOOTSTRAP_ROUTE)
     public ResponseEntity<BootstrapDTO> bootstrap(
             @Validated @RequestBody GameDTO gameDTO,
             HttpSession session
@@ -39,7 +40,7 @@ public class GameController {
         return ResponseEntity.ok().body(bootstrapDTO);
     }
 
-    @PostMapping("/game/api/v1/bet")
+    @PostMapping(Routes.GAME_BET_ROUTE)
     public ResponseEntity<BetResponseDTO> bet(
             @Validated @RequestBody BetRequestDTO betRequestDTO,
             HttpSession session

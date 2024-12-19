@@ -10,8 +10,9 @@
         <header class="header">header</header>
         <main class="main">
             <section class="carousel">
+                <img src="/images/0x.png" alt="" class="carousel__img active"/>
                 <div class="carousel__images-container" th:each="image : ${images}">
-                    <img th:src="${image.getSrc()}" alt="" class="carousel__img active"/>
+                    <img th:src="${image.getSrc()}" alt="" class="carousel__img"/>
                 </div>
             </section>
             <article>

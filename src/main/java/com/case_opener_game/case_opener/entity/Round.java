@@ -26,7 +26,7 @@ public class Round {
     private BigDecimal amount;
 
     @Column(name = "multiplier")
-    private Integer multiplier;
+    private BigDecimal multiplier;
 
     @Column(name = "payout")
     private BigDecimal payout;

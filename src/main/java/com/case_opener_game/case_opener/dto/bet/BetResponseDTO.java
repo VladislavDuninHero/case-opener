@@ -12,6 +12,6 @@ import java.math.BigDecimal;
 public class BetResponseDTO {
     private Long id;
     private BigDecimal amount;
-    private int multiplier;
+    private BigDecimal multiplier;
     private BigDecimal payout;
 }

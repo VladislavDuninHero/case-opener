@@ -1,5 +1,6 @@
 package com.case_opener_game.case_opener.controller;
 
+import com.case_opener_game.case_opener.constants.Routes;
 import com.case_opener_game.case_opener.dto.GameDTO;
 import com.case_opener_game.case_opener.dto.bootstrap.BootstrapDTO;
 import com.case_opener_game.case_opener.dto.ui.Image;
@@ -33,12 +34,12 @@ public class MainController {
         this.imagesFactory = imagesFactory;
     }
 
-    @GetMapping("/")
+    @GetMapping(Routes.HOME_ROUTE)
     public String home() {
         return "index";
     }
 
-    @PostMapping("/game")
+    @PostMapping(Routes.GAME_ROUTE)
     public String bootstrap(
             @Validated @RequestBody GameDTO gameDTO,
             HttpSession session,
@@ -53,7 +54,7 @@ public class MainController {
         return "game";
     }
 
-    @GetMapping("/game")
+    @GetMapping(Routes.GAME_ROUTE)
     public String game(Model model, HttpSession session) {
         if (session.getAttribute("difficulty") == null) {
             throw new SessionInitException("Session not found");

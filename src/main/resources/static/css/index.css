@@ -2,6 +2,7 @@
     padding: 0px;
     margin: 0px;
     border: none;
+    font: 1.2rem "Roboto Light", sans-serif;
 }
 
 *,
@@ -18,39 +19,56 @@
     flex-direction: column;
     padding: 5px;
     height: 100vh;
+    background-image: url("../images/index_background.webp");
+    background-size: cover;
+    background-position: center;
 }
 
 .home-page {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
     width: 20rem;
-    border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
+    background-color: #7fb8ff;
+    box-shadow: 0 10px 70px black;
+    min-height: 6rem;
 }
 
 
 .game-difficulty-form__button {
-    border: 1px solid black;
     border-radius: 5px;
     margin: 5px;
     padding: 5px;
     cursor: pointer;
+    background-color: #ff9900;
+    box-shadow: 0 4px 10px black;
 }
 .game-difficulty-form__button:active {
     transform: scale(0.9);
 }
+.game-difficulty-form__button:hover {
+    background-color: #54a1e1;
+    transition: ease-in-out 0.2s all;
+}
 
 .game-difficulty-form__select {
-    border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
+    cursor: pointer;
+    background-color: #e0e0ff;
+}
+.game-difficulty-form__select:hover {
+    background-color: #54a1e1;
+    transition: ease-in-out 0.2s all;
 }
 
 .game-difficulty-form {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
+

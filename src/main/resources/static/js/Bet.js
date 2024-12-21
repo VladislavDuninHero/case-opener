@@ -4,10 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const bet = new Bet();
     const carousel = new Carousel();
 
+    const defaultActive = document.querySelector(".carousel__img");
+    defaultActive.classList.add("active");
+
     document.querySelector(".main__bet-button")
         .addEventListener("click", async () => {
             const response = await bet.submitBet(1);
-
             carousel.runCarousel(response.multiplier);
         });
 })

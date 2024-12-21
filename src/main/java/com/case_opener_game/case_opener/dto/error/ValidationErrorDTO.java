@@ -9,6 +9,6 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ValidationErrorDTO {
-    private List<ErrorDTO> errors;
+public class ValidationErrorDTO<T extends AbstractError> {
+    private List<T> errors;
 }

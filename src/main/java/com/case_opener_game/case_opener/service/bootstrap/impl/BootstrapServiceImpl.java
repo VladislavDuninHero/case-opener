@@ -3,13 +3,12 @@ package com.case_opener_game.case_opener.service.bootstrap.impl;
 import com.case_opener_game.case_opener.config.BootstrapFactoryBean;
 import com.case_opener_game.case_opener.dto.bootstrap.BootstrapDTO;
 import com.case_opener_game.case_opener.dto.GameDTO;
+import com.case_opener_game.case_opener.enums.Game;
 import com.case_opener_game.case_opener.enums.GameDifficulty;
 import com.case_opener_game.case_opener.service.bootstrap.BootstrapService;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class BootstrapServiceImpl implements BootstrapService {
@@ -24,9 +23,11 @@ public class BootstrapServiceImpl implements BootstrapService {
 
         String gameName = gameDTO.getGameName();
         String difficulty = gameDTO.getDifficulty();
+        GameDifficulty gameDifficulty = GameDifficulty.valueOf(difficulty.toUpperCase());
+
         List<Double> multipliers = bootstrapFactoryBean
                 .multipliers()
-                .get(GameDifficulty.valueOf(difficulty.toUpperCase()))
+                .get(gameDifficulty)
                 .keySet()
                 .stream()
                 .sorted()

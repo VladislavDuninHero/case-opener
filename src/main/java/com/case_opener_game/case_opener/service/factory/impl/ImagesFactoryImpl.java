@@ -2,6 +2,7 @@ package com.case_opener_game.case_opener.service.factory.impl;
 
 import com.case_opener_game.case_opener.dto.ui.Image;
 import com.case_opener_game.case_opener.enums.GameDifficulty;
+import com.case_opener_game.case_opener.exception.game.NotImplementedException;
 import com.case_opener_game.case_opener.service.factory.ImagesFactory;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,7 @@ public class ImagesFactoryImpl implements ImagesFactory {
                     GameDifficulty.MEDIUM, List.of(
                             new Image("/images/0x.png"),
                             new Image("/images/0.2x.png"),
+                            new Image("/images/0.5x.png"),
                             new Image("/images/1x.png"),
                             new Image("/images/2x.png"),
                             new Image("/images/5x.png"),
@@ -59,7 +61,7 @@ public class ImagesFactoryImpl implements ImagesFactory {
     @Override
     public List<Image> getImages(GameDifficulty gameDifficulty) {
         if (!images.containsKey(gameDifficulty)) {
-            throw new IllegalArgumentException("");
+            throw new NotImplementedException("Images for this difficulty is not implemented");
         }
 
         return images.get(gameDifficulty);

@@ -19,24 +19,49 @@
     flex-direction: column;
     padding: 5px;
     height: 100vh;
-    background-image: url("../images/index_background.webp");
+    background-image: url("../images/background.webp");
     background-size: cover;
     background-position: center;
 }
 
 .home-page {
     display: flex;
+    color: yellow;
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
     width: 20rem;
-    border-radius: 5px;
+    border-radius: 20px;
     padding: 5px;
-    background-color: #7fb8ff;
-    box-shadow: 0 10px 70px black;
+    background-color: #1e457791;
+    box-shadow: 0 0 70px yellow;
     min-height: 6rem;
 }
 
+.header-home-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-home-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-home-page__user-link {
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: white;
+}
+.footer-home-page__user-link:hover {
+    color: yellow;
+}
 
 .game-difficulty-form__button {
     border-radius: 5px;

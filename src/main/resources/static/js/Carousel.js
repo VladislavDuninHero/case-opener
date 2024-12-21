@@ -30,6 +30,7 @@ class Carousel {
         this.currentIndex = Math.floor(Math.random() * this.totalSlides);
 
         this.slides.forEach(slide => slide.classList.remove("active"));
+        this.slides[this.currentIndex].classList.add("active");
 
         this.slideInterval = setInterval(() => {
 

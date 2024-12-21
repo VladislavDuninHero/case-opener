@@ -1,7 +1,9 @@
 package com.case_opener_game.case_opener.dto;
 
+import com.case_opener_game.case_opener.enums.GameDifficulty;
+import com.case_opener_game.case_opener.validation.annotations.EnumValidate;
+import com.case_opener_game.case_opener.enums.Game;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,12 +17,12 @@ import org.springframework.validation.annotation.Validated;
 public class GameDTO {
 
     @NotBlank
-    @NotEmpty
     @NotNull
+    @EnumValidate(enumClass = Game.class, message = "Game not found")
     private String gameName;
 
     @NotBlank
-    @NotEmpty
     @NotNull
+    @EnumValidate(enumClass = GameDifficulty.class, message = "Difficulty not found")
     private String difficulty;
 }

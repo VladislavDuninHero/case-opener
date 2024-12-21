@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <link type="text/css" rel="stylesheet" th:href="@{/css/carousel.css}">
-    <title>Title</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/game.css}">
+    <title>Case opener!</title>
 </head>
 <body>
     <div class="main-container">
-        <header class="header">header</header>
+        <header class="header"></header>
         <main class="main">
-            <section class="carousel">
-                <img src="/images/0x.png" alt="" class="carousel__img active"/>
-                <div class="carousel__images-container" th:each="image : ${images}">
-                    <img th:src="${image.getSrc()}" alt="" class="carousel__img"/>
-                </div>
-            </section>
-            <article>
-                <button class="main__bet-button">Bet</button>
-            </article>
+                <section class="carousel">
+                    <div class="carousel__images-container" th:each="image : ${images}">
+                        <img th:src="${image.getSrc()}" alt="" class="carousel__img"/>
+                    </div>
+                </section>
+                <article class="main__article">
+                    <button class="main__bet-button">Bet</button>
+                </article>
         </main>
-        <footer class="footer">footer</footer>
+        <footer class="footer"></footer>
     </div>
 
     <script

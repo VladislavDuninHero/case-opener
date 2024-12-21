@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-author
+      author: vladislavDunin
+      changes:
+        - createTable:
+            tableName: game_rounds
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: amount
+                  type: numeric
+              - column:
+                  name: multiplier
+                  type: numeric
+              - column:
+                  name: payout
+                  type: numeric
+              - column:
+                  name: created_at
+                  type: date
+              - column:
+                  name: updated_at
+                  type: date

@@ -1,6 +1,5 @@
 package com.case_opener_game.case_opener.service.utils.mapping;
 
-import com.case_opener_game.case_opener.dto.bet.BetRequestDTO;
 import com.case_opener_game.case_opener.dto.bet.BetResponseDTO;
 import com.case_opener_game.case_opener.dto.bet.CalculatedRoundDTO;
 import com.case_opener_game.case_opener.entity.Round;

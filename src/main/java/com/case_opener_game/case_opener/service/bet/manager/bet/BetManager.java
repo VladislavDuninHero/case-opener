@@ -1,4 +1,4 @@
-package com.case_opener_game.case_opener.service.bet.manager;
+package com.case_opener_game.case_opener.service.bet.manager.bet;
 
 import com.case_opener_game.case_opener.dto.bet.BetDTO;
 import com.case_opener_game.case_opener.dto.bet.CalculatedRoundDTO;

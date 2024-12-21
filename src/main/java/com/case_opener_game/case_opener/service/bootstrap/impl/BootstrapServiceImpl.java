@@ -8,6 +8,7 @@ import com.case_opener_game.case_opener.enums.GameDifficulty;
 import com.case_opener_game.case_opener.service.bootstrap.BootstrapService;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -23,6 +24,7 @@ public class BootstrapServiceImpl implements BootstrapService {
 
         String gameName = gameDTO.getGameName();
         String difficulty = gameDTO.getDifficulty();
+        BigDecimal balance = BigDecimal.valueOf(1000);
         GameDifficulty gameDifficulty = GameDifficulty.valueOf(difficulty.toUpperCase());
 
         List<Double> multipliers = bootstrapFactoryBean
@@ -36,7 +38,8 @@ public class BootstrapServiceImpl implements BootstrapService {
         return new BootstrapDTO(
                 gameName,
                 multipliers,
-                difficulty
+                difficulty,
+                balance
         );
     }
 }

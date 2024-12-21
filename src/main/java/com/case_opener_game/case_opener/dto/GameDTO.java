@@ -1,5 +1,6 @@
 package com.case_opener_game.case_opener.dto;
 
+import com.case_opener_game.case_opener.constants.ExceptionMessage;
 import com.case_opener_game.case_opener.enums.GameDifficulty;
 import com.case_opener_game.case_opener.validation.annotations.EnumValidate;
 import com.case_opener_game.case_opener.enums.Game;
@@ -18,11 +19,11 @@ public class GameDTO {
 
     @NotBlank
     @NotNull
-    @EnumValidate(enumClass = Game.class, message = "Game not found")
+    @EnumValidate(enumClass = Game.class, message = ExceptionMessage.GAME_NOT_FOUND_EXCEPTION)
     private String gameName;
 
     @NotBlank
     @NotNull
-    @EnumValidate(enumClass = GameDifficulty.class, message = "Difficulty not found")
+    @EnumValidate(enumClass = GameDifficulty.class, message = ExceptionMessage.DIFFICULTY_NOT_FOUND_EXCEPTION)
     private String difficulty;
 }

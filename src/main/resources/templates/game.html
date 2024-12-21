@@ -16,7 +16,13 @@
                     </div>
                 </section>
                 <article class="main__article">
+                    <p class="article__balance-container">
+                        Balance: <span class="p__balance" th:text="${balance}">0</span>
+                    </p>
                     <button class="main__bet-button">Bet</button>
+                    <p class="article__exception">
+
+                    </p>
                 </article>
         </main>
         <footer class="footer"></footer>
@@ -29,6 +35,14 @@
     <script
             type="module"
             th:src="@{/js/Bet.js}"
+    ></script>
+    <script
+            type="module"
+            th:src="@{/js/BalanceListener.js}"
+    ></script>
+    <script
+            type="module"
+            th:src="@{/js/ExceptionHandler.js}"
     ></script>
 </body>
 </html>

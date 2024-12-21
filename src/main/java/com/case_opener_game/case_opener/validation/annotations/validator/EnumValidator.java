@@ -1,4 +1,4 @@
-package com.case_opener_game.case_opener.validation.validator;
+package com.case_opener_game.case_opener.validation.annotations.validator;
 
 import com.case_opener_game.case_opener.validation.annotations.EnumValidate;
 import jakarta.validation.ConstraintValidator;

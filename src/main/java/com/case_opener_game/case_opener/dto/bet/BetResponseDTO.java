@@ -14,4 +14,5 @@ public class BetResponseDTO {
     private BigDecimal amount;
     private BigDecimal multiplier;
     private BigDecimal payout;
+    private BigDecimal balance;
 }

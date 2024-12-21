@@ -1,8 +1,10 @@
 package com.case_opener_game.case_opener.controller.game;
 
 import com.case_opener_game.case_opener.dto.error.ErrorDTO;
+import com.case_opener_game.case_opener.dto.error.UserErrorDTO;
 import com.case_opener_game.case_opener.dto.error.ValidationErrorDTO;
 import com.case_opener_game.case_opener.enums.ErrorCode;
+import com.case_opener_game.case_opener.exception.game.LowBalanceException;
 import com.case_opener_game.case_opener.exception.game.NotImplementedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -73,6 +75,20 @@ public class GameControllerErrorHandler {
                         ex.getMessage(),
                         ex.getLocalizedMessage(),
                         ErrorCode.NOT_IMPLEMENTED.getCode()
+                )
+        );
+
+        return new ValidationErrorDTO<>(errors);
+    }
+
+    @ExceptionHandler(LowBalanceException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ValidationErrorDTO<UserErrorDTO> onLowBalanceException(LowBalanceException ex) {
+        final List<UserErrorDTO> errors = List.of(
+                new UserErrorDTO(
+                        ErrorCode.VALIDATION_FAILED.getCode(),
+                        ex.getMessage()
                 )
         );
 

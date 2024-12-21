@@ -1,10 +1,10 @@
-package com.case_opener_game.case_opener.service.bet.manager.impl;
+package com.case_opener_game.case_opener.service.bet.manager.bet.impl;
 
 import com.case_opener_game.case_opener.dto.bet.BetDTO;
 import com.case_opener_game.case_opener.dto.bet.CalculatedRoundDTO;
 import com.case_opener_game.case_opener.enums.CalculatorType;
 import com.case_opener_game.case_opener.service.bet.calculator.Calculator;
-import com.case_opener_game.case_opener.service.bet.manager.BetManager;
+import com.case_opener_game.case_opener.service.bet.manager.bet.BetManager;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

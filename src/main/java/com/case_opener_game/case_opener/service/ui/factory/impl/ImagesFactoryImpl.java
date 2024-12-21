@@ -1,9 +1,9 @@
-package com.case_opener_game.case_opener.service.factory.impl;
+package com.case_opener_game.case_opener.service.ui.factory.impl;
 
 import com.case_opener_game.case_opener.dto.ui.Image;
 import com.case_opener_game.case_opener.enums.GameDifficulty;
 import com.case_opener_game.case_opener.exception.game.NotImplementedException;
-import com.case_opener_game.case_opener.service.factory.ImagesFactory;
+import com.case_opener_game.case_opener.service.ui.factory.ImagesFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

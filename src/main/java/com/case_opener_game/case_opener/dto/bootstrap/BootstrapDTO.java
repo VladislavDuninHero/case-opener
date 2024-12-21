@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
@@ -16,4 +17,6 @@ public class BootstrapDTO {
     private List<Double> multipliers;
 
     private String difficulty;
+
+    private BigDecimal balance;
 }

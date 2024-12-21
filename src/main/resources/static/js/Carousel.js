@@ -1,7 +1,7 @@
 class Carousel {
     currentIndex = 0;
     slideInterval;
-    slideDuration = 1000;
+    slideDuration = 500;
     stopDuration = 13_000;
     slides = document.querySelectorAll(".carousel__img");
     submitButton = document.querySelector(".main__bet-button");
@@ -57,7 +57,13 @@ class Carousel {
     showWinner() {
         this.slides.forEach(slide => slide.classList.remove("active"));
 
-        const winningSlide = Array.from(this.slides).find(slide => slide.src.includes(this.winnerMap.get(this.winnerKey)));
+        const winningSlide = Array.from(this.slides)
+            .find(
+                slide => slide.src
+                    .includes(
+                        this.winnerMap.get(this.winnerKey)
+                    )
+            );
         if (winningSlide) {
             winningSlide.classList.add("active");
         }

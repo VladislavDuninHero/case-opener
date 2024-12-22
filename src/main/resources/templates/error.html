@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/error.css}">
+</head>
+<body>
+<main class="main">
+    <section class="main__error-container">
+        <article class="section__article-error-container">
+            <h2 class="article__h2-error-title">Welcome to error page:
+                <span class="h2__span-error-code" th:text="${status}"></span>
+            </h2>
+            <p class="article__p-error" th:text="${message}"></p>
+            <a href="/" class="article__a-home-page-link">Back to home page</a>
+        </article>
+    </section>
+</main>
+</body>
+</html>

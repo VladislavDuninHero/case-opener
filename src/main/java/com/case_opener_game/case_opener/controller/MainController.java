@@ -1,7 +1,9 @@
 package com.case_opener_game.case_opener.controller;
 
 import com.case_opener_game.case_opener.constants.ExceptionMessage;
+import com.case_opener_game.case_opener.constants.Pages;
 import com.case_opener_game.case_opener.constants.Routes;
+import com.case_opener_game.case_opener.constants.SessionAttributes;
 import com.case_opener_game.case_opener.dto.GameDTO;
 import com.case_opener_game.case_opener.dto.bootstrap.BootstrapDTO;
 import com.case_opener_game.case_opener.dto.ui.Image;
@@ -36,7 +38,7 @@ public class MainController {
 
     @GetMapping(Routes.HOME_ROUTE)
     public String home() {
-        return "index";
+        return Pages.HOME;
     }
 
     @PostMapping(Routes.GAME_ROUTE)
@@ -47,27 +49,27 @@ public class MainController {
     ) {
         BootstrapDTO bootstrapDTO = bootstrapService.bootstrap(gameDTO);
 
-        session.setAttribute("difficulty", gameDTO.getDifficulty());
-        session.setAttribute("gameName", gameDTO.getGameName());
-        session.setAttribute("balance", bootstrapDTO.getBalance());
-        model.addAttribute("gameDTO", bootstrapDTO);
+        session.setAttribute(SessionAttributes.DIFFICULTY, gameDTO.getDifficulty());
+        session.setAttribute(SessionAttributes.GAME_NAME, gameDTO.getGameName());
+        session.setAttribute(SessionAttributes.BALANCE, bootstrapDTO.getBalance());
+        model.addAttribute(SessionAttributes.GAME_DTO, bootstrapDTO);
 
-        return "game";
+        return Pages.GAME;
     }
 
     @GetMapping(Routes.GAME_ROUTE)
     public String game(Model model, HttpSession session) {
-        if (session.getAttribute("difficulty") == null) {
+        if (session.getAttribute(SessionAttributes.DIFFICULTY) == null) {
             throw new SessionInitException(ExceptionMessage.SESSION_NOT_FOUND_EXCEPTION);
         }
 
-        String difficulty = session.getAttribute("difficulty").toString().toUpperCase();
+        String difficulty = session.getAttribute(SessionAttributes.DIFFICULTY).toString().toUpperCase();
 
         List<Image> images = imagesFactory.getImages(GameDifficulty.valueOf(difficulty));
 
-        model.addAttribute("images", images);
-        model.addAttribute("balance", session.getAttribute("balance"));
+        model.addAttribute(SessionAttributes.GAME_MULTIPLIER_IMAGES, images);
+        model.addAttribute(SessionAttributes.BALANCE, session.getAttribute(SessionAttributes.BALANCE));
 
-        return "game";
+        return Pages.GAME;
     }
 }

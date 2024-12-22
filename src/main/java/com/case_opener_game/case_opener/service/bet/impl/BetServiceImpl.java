@@ -10,10 +10,8 @@ import com.case_opener_game.case_opener.service.bet.BetService;
 import com.case_opener_game.case_opener.service.bet.manager.balance.BalanceManager;
 import com.case_opener_game.case_opener.service.bet.manager.bet.BetManager;
 import com.case_opener_game.case_opener.service.utils.mapping.RoundMapper;
-import com.case_opener_game.case_opener.validation.chain.ValidationService;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 
 @Service
 public class BetServiceImpl implements BetService {

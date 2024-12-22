@@ -1,6 +1,7 @@
 package com.case_opener_game.case_opener.constants;
 
-public class SessionAttributes {
+public final class SessionAttributes {
+    private SessionAttributes() {}
     public static final String DIFFICULTY = "difficulty";
     public static final String GAME_NAME = "gameName";
     public static final String BALANCE = "balance";

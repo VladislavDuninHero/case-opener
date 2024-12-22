@@ -12,8 +12,6 @@ public class CaseOpenerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CaseOpenerApplication.class, args);
-
-		System.out.println(LocalDateTime.now() + " last build");
 	}
 
 }

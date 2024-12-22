@@ -1,5 +1,6 @@
 package com.case_opener_game.case_opener.validation.chain.validators.impl;
 
+import com.case_opener_game.case_opener.constants.ExceptionMessage;
 import com.case_opener_game.case_opener.dto.user.BalanceDTO;
 import com.case_opener_game.case_opener.exception.game.LowBalanceException;
 import com.case_opener_game.case_opener.validation.chain.validators.AbstractValidator;
@@ -11,7 +12,7 @@ public class LowBalanceValidator extends AbstractValidator<BalanceDTO> {
     @Override
     public BalanceDTO validate(BalanceDTO value) {
         if (value.getBalance().doubleValue() <= 0) {
-            throw new LowBalanceException("Insufficient balance");
+            throw new LowBalanceException(ExceptionMessage.INSUFFICIENT_BALANCE);
         }
 
         if (this.next != null) {

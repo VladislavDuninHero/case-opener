@@ -6,6 +6,7 @@ import com.case_opener_game.case_opener.enums.ErrorCode;
 import com.case_opener_game.case_opener.exception.session.SessionInitException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 
 import java.util.List;
@@ -22,6 +23,18 @@ public class GlobalErrorHandler {
                         ex.getMessage()
                 )
         );
+
+        return new ValidationErrorDTO<>(errors);
+    }
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ValidationErrorDTO<GlobalErrorDTO> onNoResourceFoundException(NoResourceFoundException ex) {
+        List<GlobalErrorDTO> errors = List.of(new GlobalErrorDTO(
+                ErrorCode.NOT_FOUND.getCode(),
+                ex.getMessage()
+        ));
 
         return new ValidationErrorDTO<>(errors);
     }

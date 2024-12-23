@@ -8,20 +8,21 @@ import com.case_opener_game.case_opener.validation.chain.validators.AbstractVali
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-@Order(1)
+@Order(2)
 @Component
-public class LowBalanceValidator extends AbstractValidator<BalanceDTO, BetRequestDTO> {
+public class BetHigherThanBalanceValidator extends AbstractValidator<BalanceDTO, BetRequestDTO> {
 
     @Override
-    public BalanceDTO validate(BalanceDTO value, BetRequestDTO betRequestDTO) {
-        if (value.getBalance().doubleValue() <= 0) {
+    public BalanceDTO validate(BalanceDTO value, BetRequestDTO request) {
+        if (value.getBalance().compareTo(request.getAmount()) < 0) {
             throw new LowBalanceException(ExceptionMessage.INSUFFICIENT_BALANCE);
         }
 
         if (this.next != null) {
-            return this.next.validate(value, betRequestDTO);
+            return this.next.validate(value, request);
         }
 
         return value;
     }
+
 }

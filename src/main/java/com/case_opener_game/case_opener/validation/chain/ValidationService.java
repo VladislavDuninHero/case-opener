@@ -1,7 +1,7 @@
 package com.case_opener_game.case_opener.validation.chain;
 
 
-public interface ValidationService<T> {
+public interface ValidationService<V, E> {
 
-    public void validate(T value);
+    public void validate(V value, E extension);
 }

@@ -1,5 +1,6 @@
 package com.case_opener_game.case_opener.validation.validators;
 
+import com.case_opener_game.case_opener.dto.bet.BetRequestDTO;
 import com.case_opener_game.case_opener.dto.user.BalanceDTO;
 import com.case_opener_game.case_opener.exception.game.LowBalanceException;
 import com.case_opener_game.case_opener.validation.chain.validators.impl.LowBalanceValidator;
@@ -26,23 +27,24 @@ public class BalanceValidationTests {
     public void zeroBalanceTest() {
         //Given
         BigDecimal balance = BigDecimal.ZERO;
+        BetRequestDTO betRequestDTO = new BetRequestDTO(BigDecimal.ONE);
 
         //When
         Mockito.when(balanceDTO.getBalance()).thenReturn(balance);
 
         //Then
-        Assertions.assertThrows(LowBalanceException.class, () -> lowBalanceValidator.validate(balanceDTO));
+        Assertions.assertThrows(LowBalanceException.class, () -> lowBalanceValidator.validate(balanceDTO, betRequestDTO));
     }
 
     @Test
     public void negativeBalanceTest() {
         //Given
         BigDecimal balance = BigDecimal.ONE.negate();
-
+        BetRequestDTO betRequestDTO = new BetRequestDTO(BigDecimal.ONE);
         //When
         Mockito.when(balanceDTO.getBalance()).thenReturn(balance);
 
         //Then
-        Assertions.assertThrows(LowBalanceException.class, () -> lowBalanceValidator.validate(balanceDTO));
+        Assertions.assertThrows(LowBalanceException.class, () -> lowBalanceValidator.validate(balanceDTO, betRequestDTO));
     }
 }

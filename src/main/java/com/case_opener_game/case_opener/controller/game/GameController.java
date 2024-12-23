@@ -61,7 +61,7 @@ public class GameController {
         String gameName = session.getAttribute(SessionAttributes.GAME_NAME).toString();
         BigDecimal balance = (BigDecimal) session.getAttribute(SessionAttributes.BALANCE);
 
-        balanceValidationService.validate(new BalanceDTO(balance));
+        balanceValidationService.validate(new BalanceDTO(balance), betRequestDTO);
 
         BetDTO betDTO = new BetDTO(
                 betRequestDTO,

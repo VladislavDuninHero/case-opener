@@ -13,6 +13,16 @@ java {
 	}
 }
 
+
+
+jar {
+	manifest {
+		attributes(
+				'Main-Class': 'com.case_opener_game.case-opener.CaseOpenerApplication'
+		)
+	}
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor

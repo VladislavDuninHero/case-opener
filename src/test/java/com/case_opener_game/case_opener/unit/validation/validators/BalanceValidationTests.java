@@ -1,4 +1,4 @@
-package com.case_opener_game.case_opener.validation.validators;
+package com.case_opener_game.case_opener.unit.validation.validators;
 
 import com.case_opener_game.case_opener.dto.bet.BetRequestDTO;
 import com.case_opener_game.case_opener.dto.user.BalanceDTO;

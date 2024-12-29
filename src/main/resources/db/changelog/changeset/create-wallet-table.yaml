@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-author
+      author: vladislavDunin
+      changes:
+        - createTable:
+            tableName: wallet
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: balance
+                  type: int
+              - column:
+                  name: created_at
+                  type: date
+              - column:
+                  name: updated_at
+                  type: date
+        - addForeignKeyConstraint:
+            baseTableName: wallet
+            baseColumnNames: user_id
+            referencedColumnNames: id
+            referencedTableName: user
+            constraintName: wallet_user_id_fk

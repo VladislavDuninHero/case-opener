@@ -20,8 +20,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
-public class User implements UserDetails {
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,14 +35,7 @@ public class User implements UserDetails {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "wallet_id")
-    private Wallet walletId;
-
-    @Column(name = "role")
-    @Enumerated(EnumType.STRING)
-    private Role role;
-
-    @Column(name = "enabled")
-    private boolean enabled;
+    private Wallet wallet;
 
     @Column(name = "created_at")
     @CreationTimestamp
@@ -54,18 +47,4 @@ public class User implements UserDetails {
     @Temporal(value = TemporalType.DATE)
     private LocalDate updatedAt;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.getName()));
-    }
-
-    @Override
-    public String getUsername() {
-        return login;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
 }

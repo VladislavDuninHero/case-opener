@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-author
+      author: vladislavDunin
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                    name: id
+                    value: "1"
+              - column:
+                  name: login
+                  value: demo
+              - column:
+                  name: password,
+                  value: demo
+              - column:
+                  name: created_at
+                  value: "30.12.2024"
+              - column:
+                  name: updated_at,
+                  value: "30.12.2024"

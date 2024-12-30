@@ -1,19 +1,19 @@
 package com.case_opener_game.case_opener.service.user.impl;
 
 import com.case_opener_game.case_opener.dto.user.UserDTO;
+import com.case_opener_game.case_opener.dto.user.UserRequestDTO;
 import com.case_opener_game.case_opener.dto.user.UserResponseDTO;
 import com.case_opener_game.case_opener.dto.wallet.WalletDTO;
 import com.case_opener_game.case_opener.entity.User;
 import com.case_opener_game.case_opener.entity.Wallet;
-import com.case_opener_game.case_opener.enums.Role;
 import com.case_opener_game.case_opener.repository.UserRepository;
+import com.case_opener_game.case_opener.repository.WalletRepository;
 import com.case_opener_game.case_opener.service.user.UserService;
 import com.case_opener_game.case_opener.service.utils.mapping.UserMapper;
 import com.case_opener_game.case_opener.service.wallet.WalletService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponseDTO createUser(UserDTO userDTO) {
-        User userEntity = userMapper.toEntity(userDTO);
+    public UserResponseDTO createUser(UserRequestDTO userRequestDTO) {
+        User userEntity = userMapper.toEntity(userRequestDTO);
         Wallet wallet = new Wallet();
         wallet.setBalance(BigDecimal.valueOf(1000));
         userEntity.setWallet(wallet);
@@ -50,6 +50,19 @@ public class UserServiceImpl implements UserService {
         List<User> users = userRepository.findAll();
 
         return users.stream().map(userMapper::toDto).toList();
+    }
+
+    @Override
+    public UserDTO getUserByLogin(String login) {
+        User user = userRepository.getUserByLogin(login);
+        WalletDTO wallet = walletService.getWalletById(user.getWallet().getId());
+
+        UserDTO userDTO = new UserDTO(
+                userMapper.toDto(user),
+                wallet
+        );
+
+        return userDTO;
     }
 
 

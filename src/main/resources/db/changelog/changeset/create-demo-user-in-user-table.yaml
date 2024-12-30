@@ -11,13 +11,16 @@ databaseChangeLog:
                     value: "1"
               - column:
                   name: login
-                  value: demo
+                  value: "demo"
               - column:
-                  name: password,
-                  value: demo
+                  name: password
+                  value: "demo"
+              - column:
+                  name: wallet_id
+                  value: "1"
               - column:
                   name: created_at
                   value: "30.12.2024"
               - column:
-                  name: updated_at,
+                  name: updated_at
                   value: "30.12.2024"

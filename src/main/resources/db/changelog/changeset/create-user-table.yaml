@@ -4,7 +4,7 @@ databaseChangeLog:
       author: vladislavDunin
       changes:
         - createTable:
-            tableName: user
+            tableName: users
             columns:
               - column:
                   name: id
@@ -20,22 +20,11 @@ databaseChangeLog:
                   name: password
                   type: varchar
               - column:
-                  name: role
-                  type: varchar
-              - column:
                   name: wallet_id
-                  type: varchar
-                  constraints:
-                    nullable: false
+                  type: bigint
               - column:
                   name: created_at
                   type: date
               - column:
                   name: updated_at
                   type: date
-        - addForeignKeyConstraint:
-            baseColumnNames: wallet_id
-            baseTableName: user
-            referencedColumnNames: id
-            referencedTableName: wallet
-            constraintName: user_wallet_id_fk

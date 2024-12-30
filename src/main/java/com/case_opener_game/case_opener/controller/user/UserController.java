@@ -2,6 +2,7 @@ package com.case_opener_game.case_opener.controller.user;
 
 import com.case_opener_game.case_opener.constants.Routes;
 import com.case_opener_game.case_opener.dto.user.UserDTO;
+import com.case_opener_game.case_opener.dto.user.UserRequestDTO;
 import com.case_opener_game.case_opener.dto.user.UserResponseDTO;
 import com.case_opener_game.case_opener.service.user.UserService;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +23,11 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponseDTO> createUser(@Validated @RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserResponseDTO> createUser(
+            @Validated @RequestBody UserRequestDTO userRequestDTO
+    ) {
 
-        UserResponseDTO createdUser = userService.createUser(userDTO);
+        UserResponseDTO createdUser = userService.createUser(userRequestDTO);
 
         return ResponseEntity
                 .created(URI.create(Routes.API_USER_ROUTE))
@@ -36,5 +39,12 @@ public class UserController {
         List<UserResponseDTO> users = userService.getUsers();
 
         return ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/{login}")
+    public ResponseEntity<UserDTO> getUserByLogin(@PathVariable String login) {
+        UserDTO userResponseDTO = userService.getUserByLogin(login);
+
+        return ResponseEntity.ok(userResponseDTO);
     }
 }

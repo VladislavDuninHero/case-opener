@@ -3,6 +3,7 @@ package com.case_opener_game.case_opener.service.bootstrap.impl;
 import com.case_opener_game.case_opener.config.BootstrapFactoryBean;
 import com.case_opener_game.case_opener.dto.bootstrap.BootstrapDTO;
 import com.case_opener_game.case_opener.dto.GameDTO;
+import com.case_opener_game.case_opener.dto.user.UserDTO;
 import com.case_opener_game.case_opener.enums.GameDifficulty;
 import com.case_opener_game.case_opener.service.bootstrap.BootstrapService;
 import org.springframework.stereotype.Service;
@@ -19,11 +20,11 @@ public class BootstrapServiceImpl implements BootstrapService {
         this.bootstrapFactoryBean = bootstrapFactoryBean;
     }
 
-    public BootstrapDTO bootstrap(GameDTO gameDTO) {
+    public BootstrapDTO bootstrap(GameDTO gameDTO, UserDTO userDTO) {
 
         String gameName = gameDTO.getGameName();
         String difficulty = gameDTO.getDifficulty();
-        BigDecimal balance = BigDecimal.valueOf(1000);
+
         GameDifficulty gameDifficulty = GameDifficulty.valueOf(difficulty.toUpperCase());
 
         List<Double> multipliers = bootstrapFactoryBean
@@ -38,7 +39,7 @@ public class BootstrapServiceImpl implements BootstrapService {
                 gameName,
                 multipliers,
                 difficulty,
-                balance
+                userDTO.getWallet().getBalance()
         );
     }
 }

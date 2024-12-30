@@ -7,6 +7,7 @@
     <h3>Instruction for launching:</h3>
     <ol>
         <li>git clone</li>
-        <li>docker-compose up --build</li>
+        <li>In project directory in terminal: ./gradlew build</li>
+        <li>docker-compose up</li>
     </ol>
 </section>

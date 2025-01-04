@@ -3,18 +3,7 @@ databaseChangeLog:
       id: create-author
       author: vladislavDunin
       changes:
-        - insert:
-            tableName: wallet
-            columns:
-              - column:
-                  name: id
-                  value: "1"
-              - column:
-                  name: balance
-                  value: "1000"
-              - column:
-                  name: created_at
-                  value: "30.12.2024"
-              - column:
-                  name: updated_at
-                  value: "30.12.2024"
+        - sql:
+            sql:
+              INSERT INTO wallet (id, balance, created_at, updated_at)
+              VALUES (1, 1000, NOW(), NOW())

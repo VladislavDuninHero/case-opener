@@ -3,27 +3,7 @@ databaseChangeLog:
       id: create-author
       author: vladislavDunin
       changes:
-        - insert:
-            tableName: users
-            columns:
-              - column:
-                    name: id
-                    value: "1"
-              - column:
-                  name: login
-                  value: "demo"
-              - column:
-                  name: password
-                  value: "demo"
-              - column:
-                  name: wallet_id
-                  value: "1"
-              - column:
-                  name: role
-                  value: "USER"
-              - column:
-                  name: created_at
-                  value: "30.12.2024"
-              - column:
-                  name: updated_at
-                  value: "30.12.2024"
+        - sql:
+            sql:
+              INSERT INTO users (id, login, password, wallet_id, role, created_at, updated_at)
+              VALUES (1, 'demo', 'demo', 1, 'USER', NOW(), NOW())

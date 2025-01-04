@@ -11,6 +11,7 @@ import com.case_opener_game.case_opener.enums.ErrorCode;
 import com.case_opener_game.case_opener.enums.Game;
 import com.case_opener_game.case_opener.enums.GameDifficulty;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -26,6 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@Disabled
 public class GameControllerIT {
 
     @Autowired

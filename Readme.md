@@ -9,5 +9,8 @@
         <li>git clone</li>
         <li>In project directory in terminal: ./gradlew build</li>
         <li>docker-compose up</li>
+        <li>After launching the application enter credentials in the login form:
+            login: demo, password: demo
+        </li>
     </ol>
 </section>

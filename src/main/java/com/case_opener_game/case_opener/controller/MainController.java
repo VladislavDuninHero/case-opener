@@ -5,7 +5,6 @@ import com.case_opener_game.case_opener.dto.GameDTO;
 import com.case_opener_game.case_opener.dto.bootstrap.BootstrapDTO;
 import com.case_opener_game.case_opener.dto.ui.Image;
 import com.case_opener_game.case_opener.dto.user.UserDTO;
-import com.case_opener_game.case_opener.dto.user.UserResponseDTO;
 import com.case_opener_game.case_opener.enums.GameDifficulty;
 import com.case_opener_game.case_opener.exception.session.SessionInitException;
 import com.case_opener_game.case_opener.service.bootstrap.BootstrapService;
@@ -42,6 +41,11 @@ public class MainController {
     @GetMapping(Routes.HOME_ROUTE)
     public String home() {
         return Pages.HOME;
+    }
+
+    @GetMapping(Routes.LOGIN_ROUTE)
+    public String login() {
+        return Pages.LOGIN;
     }
 
     @PostMapping(Routes.GAME_ROUTE)

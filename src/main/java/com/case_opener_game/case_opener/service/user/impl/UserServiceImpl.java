@@ -7,7 +7,6 @@ import com.case_opener_game.case_opener.dto.wallet.WalletDTO;
 import com.case_opener_game.case_opener.entity.User;
 import com.case_opener_game.case_opener.entity.Wallet;
 import com.case_opener_game.case_opener.repository.UserRepository;
-import com.case_opener_game.case_opener.repository.WalletRepository;
 import com.case_opener_game.case_opener.service.user.UserService;
 import com.case_opener_game.case_opener.service.utils.mapping.UserMapper;
 import com.case_opener_game.case_opener.service.wallet.WalletService;
@@ -15,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -54,11 +54,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO getUserByLogin(String login) {
-        User user = userRepository.getUserByLogin(login);
-        WalletDTO wallet = walletService.getWalletById(user.getWallet().getId());
+        Optional<User> user = userRepository.getUserByLogin(login);
+        User findedUser = user.orElseThrow();
+        WalletDTO wallet = walletService.getWalletById(findedUser.getWallet().getId());
 
         UserDTO userDTO = new UserDTO(
-                userMapper.toDto(user),
+                userMapper.toDto(findedUser),
                 wallet
         );
 

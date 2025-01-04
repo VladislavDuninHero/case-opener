@@ -19,6 +19,9 @@ databaseChangeLog:
                   name: wallet_id
                   value: "1"
               - column:
+                  name: role
+                  value: "USER"
+              - column:
                   name: created_at
                   value: "30.12.2024"
               - column:

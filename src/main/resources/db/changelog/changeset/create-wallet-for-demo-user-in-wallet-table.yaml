@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-author
+      author: vladislavDunin
+      changes:
+        - sql:
+            sql:
+              INSERT INTO wallet (id, balance, created_at, updated_at)
+              VALUES (1, 1000, NOW(), NOW())

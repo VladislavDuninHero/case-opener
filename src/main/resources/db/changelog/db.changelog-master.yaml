@@ -1,3 +1,11 @@
 databaseChangeLog:
   - include:
       file: db/changelog/changeset/create-game-rounds-table.yaml
+  - include:
+      file: db/changelog/changeset/create-user-table.yaml
+  - include:
+      file: db/changelog/changeset/create-wallet-table.yaml
+  - include:
+      file: db/changelog/changeset/create-demo-user-in-user-table.yaml
+  - include:
+      file: db/changelog/changeset/create-wallet-for-demo-user-in-wallet-table.yaml

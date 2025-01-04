@@ -5,4 +5,5 @@ public final class Pages {
     public static final String HOME = "index";
     public static final String GAME = "game";
     public static final String ERROR = "error";
+    public static final String LOGIN = "login";
 }

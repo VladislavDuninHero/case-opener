@@ -1,16 +1,15 @@
 package com.case_opener_game.case_opener.controller;
 
-import com.case_opener_game.case_opener.constants.ExceptionMessage;
-import com.case_opener_game.case_opener.constants.Pages;
-import com.case_opener_game.case_opener.constants.Routes;
-import com.case_opener_game.case_opener.constants.SessionAttributes;
+import com.case_opener_game.case_opener.constants.*;
 import com.case_opener_game.case_opener.dto.GameDTO;
 import com.case_opener_game.case_opener.dto.bootstrap.BootstrapDTO;
 import com.case_opener_game.case_opener.dto.ui.Image;
+import com.case_opener_game.case_opener.dto.user.UserDTO;
 import com.case_opener_game.case_opener.enums.GameDifficulty;
 import com.case_opener_game.case_opener.exception.session.SessionInitException;
 import com.case_opener_game.case_opener.service.bootstrap.BootstrapService;
 import com.case_opener_game.case_opener.service.ui.factory.ImagesFactory;
+import com.case_opener_game.case_opener.service.user.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,18 +26,26 @@ public class MainController {
 
     private final BootstrapService bootstrapService;
     private final ImagesFactory imagesFactory;
+    private final UserService userService;
 
     public MainController(
             BootstrapService bootstrapService,
-            ImagesFactory imagesFactory
+            ImagesFactory imagesFactory,
+            UserService userService
     ) {
         this.bootstrapService = bootstrapService;
         this.imagesFactory = imagesFactory;
+        this.userService = userService;
     }
 
     @GetMapping(Routes.HOME_ROUTE)
     public String home() {
         return Pages.HOME;
+    }
+
+    @GetMapping(Routes.LOGIN_ROUTE)
+    public String login() {
+        return Pages.LOGIN;
     }
 
     @PostMapping(Routes.GAME_ROUTE)
@@ -47,11 +54,13 @@ public class MainController {
             HttpSession session,
             Model model
     ) {
-        BootstrapDTO bootstrapDTO = bootstrapService.bootstrap(gameDTO);
+        UserDTO userDTO = userService.getUserByLogin(DemoAccounts.DEMO_ACCOUNT_LOGIN);
+        BootstrapDTO bootstrapDTO = bootstrapService.bootstrap(gameDTO, userDTO);
 
         session.setAttribute(SessionAttributes.DIFFICULTY, gameDTO.getDifficulty());
         session.setAttribute(SessionAttributes.GAME_NAME, gameDTO.getGameName());
-        session.setAttribute(SessionAttributes.BALANCE, bootstrapDTO.getBalance());
+        session.setAttribute(SessionAttributes.BALANCE, userDTO.getWallet().getBalance());
+        session.setAttribute(SessionAttributes.WALLET_ID, userDTO.getWallet().getId());
         model.addAttribute(SessionAttributes.GAME_DTO, bootstrapDTO);
 
         return Pages.GAME;

@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <link type="text/css" rel="stylesheet" th:href="@{/css/carousel.css}">
     <link type="text/css" rel="stylesheet" th:href="@{/css/game.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/css/logoutButton.css}">
     <title>Case opener!</title>
 </head>
 <body>
     <div class="main-container">
-        <header class="header"></header>
+        <header class="header">
+            <article th:insert="~{LogoutButton :: logout-form}"></article>
+        </header>
         <main class="main">
                 <section class="carousel">
                     <div class="carousel__images-container" th:each="image : ${images}">

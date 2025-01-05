@@ -10,6 +10,8 @@ import com.case_opener_game.case_opener.repository.UserRepository;
 import com.case_opener_game.case_opener.service.user.UserService;
 import com.case_opener_game.case_opener.service.utils.mapping.UserMapper;
 import com.case_opener_game.case_opener.service.wallet.WalletService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -22,22 +24,28 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final WalletService walletService;
+    private final PasswordEncoder passwordEncoder;
 
     public UserServiceImpl(
             UserRepository userRepository,
             UserMapper userMapper,
-            WalletService walletService
+            WalletService walletService,
+            PasswordEncoder passwordEncoder
     ) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
         this.walletService = walletService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public UserResponseDTO createUser(UserRequestDTO userRequestDTO) {
         User userEntity = userMapper.toEntity(userRequestDTO);
+        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+
         Wallet wallet = new Wallet();
         wallet.setBalance(BigDecimal.valueOf(1000));
+
         userEntity.setWallet(wallet);
 
         User user = userRepository.save(userEntity);
@@ -64,6 +72,19 @@ public class UserServiceImpl implements UserService {
         );
 
         return userDTO;
+    }
+
+    @Override
+    public UserResponseDTO login(UserRequestDTO userRequestDTO) {
+        User user = userRepository.getUserByLogin(userRequestDTO.getLogin())
+                .orElseThrow(() -> new UsernameNotFoundException(userRequestDTO.getLogin()));
+        boolean matches = passwordEncoder.matches(userRequestDTO.getPassword(), user.getPassword());
+
+        if (matches) {
+            return userMapper.toDto(user);
+        }
+
+        throw new UsernameNotFoundException(userRequestDTO.getLogin());
     }
 
 

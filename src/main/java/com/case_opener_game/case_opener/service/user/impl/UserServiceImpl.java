@@ -1,11 +1,13 @@
 package com.case_opener_game.case_opener.service.user.impl;
 
+import com.case_opener_game.case_opener.constants.ExceptionMessage;
 import com.case_opener_game.case_opener.dto.user.UserDTO;
 import com.case_opener_game.case_opener.dto.user.UserRequestDTO;
 import com.case_opener_game.case_opener.dto.user.UserResponseDTO;
 import com.case_opener_game.case_opener.dto.wallet.WalletDTO;
 import com.case_opener_game.case_opener.entity.User;
 import com.case_opener_game.case_opener.entity.Wallet;
+import com.case_opener_game.case_opener.enums.Role;
 import com.case_opener_game.case_opener.repository.UserRepository;
 import com.case_opener_game.case_opener.service.user.UserService;
 import com.case_opener_game.case_opener.service.utils.mapping.UserMapper;
@@ -47,6 +49,7 @@ public class UserServiceImpl implements UserService {
         wallet.setBalance(BigDecimal.valueOf(1000));
 
         userEntity.setWallet(wallet);
+        userEntity.setRole(Role.USER);
 
         User user = userRepository.save(userEntity);
 
@@ -63,7 +66,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO getUserByLogin(String login) {
         Optional<User> user = userRepository.getUserByLogin(login);
-        User findedUser = user.orElseThrow();
+        User findedUser = user.orElseThrow(() -> new UsernameNotFoundException(
+                String.format(ExceptionMessage.LOGIN_NOT_FOUND, login))
+        );
         WalletDTO wallet = walletService.getWalletById(findedUser.getWallet().getId());
 
         UserDTO userDTO = new UserDTO(

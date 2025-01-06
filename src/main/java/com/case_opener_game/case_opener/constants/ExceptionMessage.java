@@ -6,4 +6,5 @@ public final class ExceptionMessage {
     public static final String GAME_NOT_FOUND_EXCEPTION = "Game not found";
     public static final String DIFFICULTY_NOT_FOUND_EXCEPTION = "Difficulty not found";
     public static final String INSUFFICIENT_BALANCE = "Insufficient balance";
+    public static final String LOGIN_NOT_FOUND = "User '%s' is not found";
 }

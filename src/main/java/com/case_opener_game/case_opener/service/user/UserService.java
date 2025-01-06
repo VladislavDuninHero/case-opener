@@ -10,4 +10,5 @@ public interface UserService {
     UserResponseDTO createUser(UserRequestDTO userRequestDTO);
     List<UserResponseDTO> getUsers();
     UserDTO getUserByLogin(String login);
+    UserResponseDTO login(UserRequestDTO userRequestDTO);
 }

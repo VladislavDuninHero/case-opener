@@ -11,6 +11,8 @@ import com.case_opener_game.case_opener.service.bootstrap.BootstrapService;
 import com.case_opener_game.case_opener.service.ui.factory.ImagesFactory;
 import com.case_opener_game.case_opener.service.user.UserService;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.math.BigDecimal;
+import java.security.Principal;
 import java.util.List;
 
 
@@ -52,15 +56,20 @@ public class MainController {
     public String bootstrap(
             @Validated @RequestBody GameDTO gameDTO,
             HttpSession session,
-            Model model
+            Model model,
+            Principal principal
     ) {
-        UserDTO userDTO = userService.getUserByLogin(DemoAccounts.DEMO_ACCOUNT_LOGIN);
-        BootstrapDTO bootstrapDTO = bootstrapService.bootstrap(gameDTO, userDTO);
+        UserDTO userDTO = userService.getUserByLogin(principal.getName());
+
+        BigDecimal balance = userDTO.getWallet().getBalance();
+        BootstrapDTO bootstrapDTO = bootstrapService.bootstrap(gameDTO, balance);
 
         session.setAttribute(SessionAttributes.DIFFICULTY, gameDTO.getDifficulty());
         session.setAttribute(SessionAttributes.GAME_NAME, gameDTO.getGameName());
+
         session.setAttribute(SessionAttributes.BALANCE, userDTO.getWallet().getBalance());
         session.setAttribute(SessionAttributes.WALLET_ID, userDTO.getWallet().getId());
+
         model.addAttribute(SessionAttributes.GAME_DTO, bootstrapDTO);
 
         return Pages.GAME;

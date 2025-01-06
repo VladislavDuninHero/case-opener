@@ -47,4 +47,14 @@ public class UserController {
 
         return ResponseEntity.ok(userResponseDTO);
     }
+
+    @PostMapping(Routes.LOGIN_ROUTE)
+    public ResponseEntity<UserResponseDTO> login(
+            @Validated @RequestBody UserRequestDTO userRequestDTO
+    ) {
+
+        UserResponseDTO userResponseDTO = userService.login(userRequestDTO);
+
+        return ResponseEntity.ok(userResponseDTO);
+    }
 }

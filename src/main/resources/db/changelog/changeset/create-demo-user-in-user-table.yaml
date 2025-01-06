@@ -6,4 +6,4 @@ databaseChangeLog:
         - sql:
             sql:
               INSERT INTO users (id, login, password, wallet_id, role, created_at, updated_at)
-              VALUES (1, 'demo', 'demo', 1, 'USER', NOW(), NOW())
+              VALUES (1, 'demo', '$2a$12$OIqPt/TzgusjiydKHkzR4O0.5V4YKdxDoNGwwaWyhj6hVd9YFR3/y', 1, 'USER', NOW(), NOW())

@@ -11,8 +11,6 @@ import com.case_opener_game.case_opener.service.bootstrap.BootstrapService;
 import com.case_opener_game.case_opener.service.ui.factory.ImagesFactory;
 import com.case_opener_game.case_opener.service.user.UserService;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;

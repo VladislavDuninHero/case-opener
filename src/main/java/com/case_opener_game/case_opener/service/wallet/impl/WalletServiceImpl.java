@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
-@Transactional
 @Service
 public class WalletServiceImpl implements WalletService {
 

@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -40,4 +41,22 @@ public class Round {
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
     private LocalDate updatedAt;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Round round = (Round) o;
+        return Objects.equals(id, round.id)
+                && Objects.equals(amount, round.amount)
+                && Objects.equals(multiplier, round.multiplier)
+                && Objects.equals(payout, round.payout)
+                && Objects.equals(createdAt, round.createdAt)
+                && Objects.equals(updatedAt, round.updatedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, amount, multiplier, payout, createdAt, updatedAt);
+    }
 }

@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -46,4 +47,22 @@ public class User {
     @Temporal(value = TemporalType.DATE)
     private LocalDate updatedAt;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id)
+                && Objects.equals(login, user.login)
+                && Objects.equals(password, user.password)
+                && role == user.role
+                && Objects.equals(wallet, user.wallet)
+                && Objects.equals(createdAt, user.createdAt)
+                && Objects.equals(updatedAt, user.updatedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, login, password, role, wallet, createdAt, updatedAt);
+    }
 }
